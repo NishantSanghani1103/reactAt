@@ -8,7 +8,7 @@ export default function Header({ name, children }) {
     return (
         <nav className="navbar navbar-expand-lg bg-body-tertiary">
             <div className="container-fluid">
-                <p className="navbar-items nav-link" >{children}</p>
+                <p className="navbar-items nav-link" ></p>
                 <button
                     className="navbar-toggler"
                     type="button"

@@ -3,7 +3,7 @@ import Header from './common/Header'
 import { productData } from './data/Products'
 
 export default function Home() {
-    let name = "Nishant Sanghani"
+    let name ="Nishant Sanghani"
     return (
         <>
             <section className='container-fluid bg-secondary min-vh-100' id='product'>
@@ -27,7 +27,7 @@ export default function Home() {
                         <h3 className='text-center py-4'>Our Product</h3>
                         <div className='row  '>
                             {
-                                productData.map((value, index) => <ProductItems key={value.id} value={value} />)
+                                productData.map((value, index) => <ProductItems name={name} key={value.id} value={value} />)
                             }
                         </div>
                     </div>
@@ -37,11 +37,12 @@ export default function Home() {
     )
 }
 
-function ProductItems({ value }) {
+function ProductItems({ value, name = "Ns" }) {
     // console.log(value);
     let { id, title, thumbnail, price } = value
     return (
         <div className='col-12 col-lg-3 col-md-6 my-2 '>
+            {name}
             <div className="bg-white  rounded-3 shadow-sm">
                 <img
                     src={thumbnail}
