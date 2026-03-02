@@ -1,8 +1,9 @@
 import React, { useContext } from 'react'
-import { counterContext } from '../MainContext'
+
+import { CounterContext } from '../CounterData';
 
 export default function Header() {
-    let c = useContext(counterContext)
+    let c = useContext(CounterContext)
     console.log(c);
 
     return (

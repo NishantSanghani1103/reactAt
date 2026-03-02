@@ -1,9 +1,9 @@
-import React, { createContext, useState } from 'react'
-import { CounterContext } from './CounterData'
+import React, { useState } from 'react'
+import { CounterContext } from './data/CounterContext'
 
 export default function MainContext({ children }) {
-    let [count, setcount] = useState(1)
-    let obj = {
+    const [count, setcount] = useState(1)
+    const obj = {
         count,
         setcount
     }
