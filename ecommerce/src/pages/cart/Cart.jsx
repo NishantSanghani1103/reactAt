@@ -8,13 +8,6 @@ export default function Cart() {
     const totalPrice = cart.reduce((acc, cuu) => acc += cuu.price * cuu.qty, 0)
     console.log(totalPrice);
 
-
-
-
-
-
-
-
     return (
         <div className="bg-light min-vh-100 d-flex flex-column">
 
@@ -78,12 +71,8 @@ export default function Cart() {
 
                         </div>
                     </div>
-
                 </div>
             </div>
-
-
-
         </div>
     );
 }

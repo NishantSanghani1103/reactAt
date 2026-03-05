@@ -7,9 +7,12 @@ export default function Memo() {
         console.log("Multiply Called...!!")
         return count * 5
     }, [count])
+    // const memo = () => {
+    //     console.log("Multiply Called...!!")
+    // }
     return (
         <>
-        <div>USEMEMO</div>
+            <div>USEMEMO</div>
             <div>
                 <h2>count is : {count}</h2>
                 <h3>Item Is : {item}</h3>
