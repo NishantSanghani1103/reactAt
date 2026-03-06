@@ -1,0 +1,9 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  font-family: sans-serif;
+  text-decoration: none;
+}
+.banner_bg{
+  background: linear-gradient(90deg, rgba(29, 28, 28, 0.7), transparent 60.99%);
+}
