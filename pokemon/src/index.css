@@ -1,0 +1,35 @@
+body {
+  background: #d7e0f5 !important;
+}
+
+.pokemon-card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+}
+
+.pokemon-img {
+  background: #e9f3ef;
+  border-radius: 50%;
+  padding: 20px;
+  width: 120px;
+  height: 120px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pokemon-img img {
+  width: 80px;
+}
+
+.type-badge {
+  background: #34c759;
+  color: white;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 13px;
+  display: inline-block;
+  margin-top: 8px;
+}
