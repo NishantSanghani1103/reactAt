@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Link, NavLink } from 'react-router-dom'
+import { CounterContext } from '../topics/hooks/USeContext/ContextData'
 
 export default function Header() {
+    const { count, setCount } = useContext(CounterContext)
     return (
         <nav className="navbar navbar-expand-lg bg-body-tertiary">
             <div className="container-fluid">
@@ -22,13 +24,21 @@ export default function Header() {
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                         <li className="nav-item">
-                            <NavLink to={'/'} className="nav-link " aria-current="page" href="#">
+                            <NavLink to={'/'} className="nav-link " aria-current="page" href="#" style={({ isActive }) => {
+                                return {
+                                    color: isActive && "blue"
+                                }
+                            }}>
                                 Home
                             </NavLink>
                         </li>
 
                         <li className="nav-item">
-                            <NavLink to={'/about'} className="nav-link" href="#">
+                            <NavLink to={'/about'} className="nav-link" href="#" style={({ isActive }) => {
+                                return {
+                                    color: isActive && "blue"
+                                }
+                            }}>
                                 About
                             </NavLink>
                         </li>
@@ -42,23 +52,45 @@ export default function Header() {
                         </li>
 
                         <li className="nav-item">
-                            <NavLink to={'/dashboard'} className="nav-link " aria-disabled="true">
+                            <NavLink to={'/dashboard'} className="nav-link " aria-disabled="true" style={({ isActive }) => {
+                                return {
+                                    color: isActive && "blue"
+                                }
+                            }}>
                                 Dashboard
                             </NavLink>
                         </li>
                         <li className="nav-item">
-                            <Link to={'/dashboard/login'} className="nav-link " aria-disabled="true">
+                            <Link to={'/dashboard/login'} className="nav-link " aria-disabled="true" >
                                 Login
                             </Link>
                         </li>
                         <li className="nav-item">
-                            <NavLink to={'/dashboard/profile'} className="nav-link " aria-disabled="true">
+                            <NavLink to={'/dashboard/profile'} className="nav-link " aria-disabled="true" style={({ isActive }) => {
+                                return {
+                                    color: isActive && "blue"
+                                }
+                            }}>
                                 Profile
                             </NavLink>
                         </li>
+                        <li className="nav-item d-flex">
+                            <NavLink to={'/cart'} className="nav-link " aria-disabled="true" style={({ isActive }) => {
+                                return {
+                                    color: isActive && "blue"
+                                }
+                            }}>
+                                Cart Context ({count})
+                            </NavLink>
+                            <button onClick={() => setCount(count + 1)} className='border-secondary border-1 bg-transparent' >cartContext+</button>
+                        </li>
                         <li className="nav-item">
-                            <NavLink to={'/cart'} className="nav-link " aria-disabled="true">
-                                Cart ()
+                            <NavLink to={'movie'} className="nav-link " aria-disabled="true" style={({ isActive }) => {
+                                return {
+                                    color: isActive && "blue"
+                                }
+                            }} >
+                                Movie
                             </NavLink>
                         </li>
                     </ul>
@@ -76,6 +108,6 @@ export default function Header() {
                     </form>
                 </div>
             </div>
-        </nav>
+        </nav >
     )
 }

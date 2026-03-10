@@ -15,10 +15,18 @@ export default function DashBoard() {
                                 <Link to={'/dashboard'} className="nav-link text-white ">Home</Link>
                             </li>
                             <li className="nav-item mb-2">
-                                <NavLink className="nav-link text-white " to={'/dashboard/profile'}>Profile</NavLink>
+                                <NavLink style={({ isActive }) => {
+                                return {
+                                    color: isActive && "blue"
+                                }
+                            }} className="nav-link " to={'/dashboard/profile'}>Profile</NavLink>
                             </li>
                             <li className="nav-item mb-2">
-                                <NavLink className="nav-link text-white " to={'/dashboard/login'}>Login</NavLink>
+                                <NavLink style={({ isActive }) => {
+                                return {
+                                    color: isActive && "blue"
+                                }
+                            }} className="nav-link  " to={'/dashboard/login'}>Login</NavLink>
                             </li>
                             <li className="nav-item">
                                 <a className="nav-link text-white " >Logout</a>

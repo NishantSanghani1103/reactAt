@@ -17,10 +17,16 @@ import UseMemo from './topics/hooks/UseMemo/UseMemo.jsx'
 import UseCallBackCounter from './topics/hooks/UseCallBack/UseCallBackCounter.jsx'
 import UserReducer from './topics/hooks/UseReducer/UserReducer.jsx'
 import Page from './topics/hooks/CustomeHooks/Page.jsx'
+import UseContext from './topics/hooks/USeContext/UseContext.jsx'
+import Error404 from './pages/Error.jsx'
+import UseLoader from './topics/hooks/UseLoader/UseLoader.jsx'
+import { getMovieData } from './topics/hooks/UseLoader/MovieData.jsx'
+import ApiDemo from './topics/apiDemo/ApiDemo.jsx'
 const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout />,
+    errorElement: <Error404 />,
     children: [
       {
         index: true,
@@ -70,15 +76,23 @@ const router = createBrowserRouter([
         element: <Page />
       },
       {
-        path: "*",
-        element: <h1>Page Not Found</h1>
+        path: "apidemo",
+        element: <ApiDemo />
+      },
+      {
+        path: "movie",
+        loader: getMovieData,
+        element: <UseLoader />
       }
     ]
   }
 ])
 
 createRoot(document.getElementById('root')).render(
-  <RouterProvider router={router} />
+
+  <UseContext>
+    <RouterProvider router={router} />
+  </UseContext>
 
   // <BrowserRouter>
   //   <Routes>
