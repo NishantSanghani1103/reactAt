@@ -8,8 +8,8 @@ import { keepPreviousData, useQuery } from '@tanstack/react-query'
 import { getProduct } from './api/ProductApi'
 import ResponsivePaginationComponent from 'react-responsive-pagination'
 import ResponsivePagination from 'react-responsive-pagination';
-import { useDispatch } from 'react-redux'
-import { addToCart } from './reducer/cartSlice'
+import { useDispatch, useSelector } from 'react-redux'
+import { addToCart, removeCart } from './reducer/cartSlice'
 function App() {
   const limit = 5
   const [currentPage, setcurrentPage] = useState(0)
@@ -98,8 +98,9 @@ function App() {
   )
 }
 function ProductRow({ value }) {
-  const { id, title, price, description,thumbnail } = value
+  const { id, title, price, description, thumbnail } = value
   const dispatch = useDispatch()
+  const { cart } = useSelector((store) => store.cart)
   const handleCart = () => {
     const obj = {
       id,
@@ -110,6 +111,14 @@ function ProductRow({ value }) {
     }
     console.log(obj);
     dispatch(addToCart(obj))
+  }
+
+  const checkProductInCart = cart.filter((items) => items.id == id)
+  console.log(checkProductInCart);
+
+  const handleRemoveCart = () => {
+    dispatch(removeCart(id))
+
   }
   return (
     <div className="col-12 col-sm-6 col-md-4 col-lg-4 d-flex">
@@ -129,10 +138,18 @@ function ProductRow({ value }) {
             <h6 className="fw-bold text-primary">
               ₹ {value.price}
             </h6>
+            {
+              checkProductInCart.length == 1
+                ?
+                <button onClick={handleRemoveCart} className="btn btn-danger w-100 rounded-pill mt-2">
+                  Remove From Cart
+                </button>
+                :
+                <button onClick={handleCart} className="btn btn-dark w-100 rounded-pill mt-2">
+                  Add to Cart
+                </button>
+            }
 
-            <button onClick={handleCart} className="btn btn-dark w-100 rounded-pill mt-2">
-              Add to Cart
-            </button>
           </div>
 
         </div>
