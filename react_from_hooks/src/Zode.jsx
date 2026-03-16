@@ -3,8 +3,8 @@ import React from 'react'
 import { useForm } from 'react-hook-form'
 import { email, z } from "zod"
 const formSchema = z.object({
-    firstName: z.string().min(5, "Minimu Length Should Be 5").max(20, "Max Length Should br 20"),
-    lastName: z.string().min(5, "Minimu Length Should Be 5").max(20, "Max Length Should br 20"),
+    firstName: z.string().min(5, "Minimu Length Should Be 5").max(20, "Max Length Should be 20"),
+    lastName: z.string().min(5, "Minimu Length Should Be 5").max(20, "Max Length Should be 20"),
     mobile: z.coerce.number().min(10, "Min Lenght Should Be 10"),
     age: z.coerce.number().min(18, "Minimum Age Should Be 18"),
     email: z.email("Email Is Invalid"),
