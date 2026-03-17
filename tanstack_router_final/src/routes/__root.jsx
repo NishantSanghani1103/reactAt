@@ -1,18 +1,17 @@
 import { createRootRoute, Link, Outlet } from "@tanstack/react-router";
 import Header from "../common/Header";
-import NotFound from "../common/NotFound";
-import Breadcrumbs from "../common/Breadcrumbs";
+
 
 export const Route = createRootRoute({
     component: () => {
         return (
             <>
+
                 <Header />
-                {/* <Breadcrumbs /> */}
                 <Outlet />
             </>
         )
 
-    },
-    notFoundComponent: NotFound
+    }
+
 })

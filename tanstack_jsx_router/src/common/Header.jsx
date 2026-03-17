@@ -27,6 +27,15 @@ export default function Header() {
                 <li>
                     <Link to={'/logout'}>LogOut</Link>
                 </li>
+                <li>
+                    <Link to={'/nav'}>Navigation Block</Link>
+                </li>
+                <li>
+                    <Link to="/items/">Router Masking</Link>
+                </li>
+                <li>
+                    <Link to="/blog/">UseMatches</Link>
+                </li>
             </ul>
             <hr />
         </>

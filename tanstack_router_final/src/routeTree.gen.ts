@@ -8,29 +8,35 @@
 // You should NOT make any changes in this file as it will be overwritten.
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
-import { Route as rootRouteImport } from './router/__root'
-import { Route as ProductRouteImport } from './router/product'
-import { Route as NavRouteImport } from './router/nav'
-import { Route as LogoutRouteImport } from './router/logout'
-import { Route as LoginRouteImport } from './router/login'
-import { Route as DashboardRouteImport } from './router/dashboard'
-import { Route as ContactRouteImport } from './router/contact'
-import { Route as AboutRouteImport } from './router/about'
-import { Route as IndexRouteImport } from './router/index'
-import { Route as ItemsIndexRouteImport } from './router/items/index'
-import { Route as BlogIndexRouteImport } from './router/blog/index'
-import { Route as ProductsIdRouteImport } from './router/products/$id'
-import { Route as ItemsIdRouteImport } from './router/items/$id'
-import { Route as BlogIdRouteImport } from './router/blog/$id'
+import { Route as rootRouteImport } from './routes/__root'
+import { Route as ParamsparameterRouteImport } from './routes/paramsparameter'
+import { Route as NavigationblockRouteImport } from './routes/navigationblock'
+import { Route as MoviesRouteImport } from './routes/movies'
+import { Route as LogoutRouteImport } from './routes/logout'
+import { Route as LoginRouteImport } from './routes/login'
+import { Route as DashboardRouteImport } from './routes/dashboard'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as AboutRouteImport } from './routes/about'
+import { Route as IndexRouteImport } from './routes/index'
+import { Route as ItemsIndexRouteImport } from './routes/items/index'
+import { Route as BlogIndexRouteImport } from './routes/blog/index'
+import { Route as ProductsIdRouteImport } from './routes/products/$id'
+import { Route as ItemsIdRouteImport } from './routes/items/$id'
+import { Route as BlogIdRouteImport } from './routes/blog/$id'
 
-const ProductRoute = ProductRouteImport.update({
-  id: '/product',
-  path: '/product',
+const ParamsparameterRoute = ParamsparameterRouteImport.update({
+  id: '/paramsparameter',
+  path: '/paramsparameter',
   getParentRoute: () => rootRouteImport,
 } as any)
-const NavRoute = NavRouteImport.update({
-  id: '/nav',
-  path: '/nav',
+const NavigationblockRoute = NavigationblockRouteImport.update({
+  id: '/navigationblock',
+  path: '/navigationblock',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MoviesRoute = MoviesRouteImport.update({
+  id: '/movies',
+  path: '/movies',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LogoutRoute = LogoutRouteImport.update({
@@ -96,8 +102,9 @@ export interface FileRoutesByFullPath {
   '/dashboard': typeof DashboardRoute
   '/login': typeof LoginRoute
   '/logout': typeof LogoutRoute
-  '/nav': typeof NavRoute
-  '/product': typeof ProductRoute
+  '/movies': typeof MoviesRoute
+  '/navigationblock': typeof NavigationblockRoute
+  '/paramsparameter': typeof ParamsparameterRoute
   '/blog/$id': typeof BlogIdRoute
   '/items/$id': typeof ItemsIdRoute
   '/products/$id': typeof ProductsIdRoute
@@ -111,8 +118,9 @@ export interface FileRoutesByTo {
   '/dashboard': typeof DashboardRoute
   '/login': typeof LoginRoute
   '/logout': typeof LogoutRoute
-  '/nav': typeof NavRoute
-  '/product': typeof ProductRoute
+  '/movies': typeof MoviesRoute
+  '/navigationblock': typeof NavigationblockRoute
+  '/paramsparameter': typeof ParamsparameterRoute
   '/blog/$id': typeof BlogIdRoute
   '/items/$id': typeof ItemsIdRoute
   '/products/$id': typeof ProductsIdRoute
@@ -127,8 +135,9 @@ export interface FileRoutesById {
   '/dashboard': typeof DashboardRoute
   '/login': typeof LoginRoute
   '/logout': typeof LogoutRoute
-  '/nav': typeof NavRoute
-  '/product': typeof ProductRoute
+  '/movies': typeof MoviesRoute
+  '/navigationblock': typeof NavigationblockRoute
+  '/paramsparameter': typeof ParamsparameterRoute
   '/blog/$id': typeof BlogIdRoute
   '/items/$id': typeof ItemsIdRoute
   '/products/$id': typeof ProductsIdRoute
@@ -144,8 +153,9 @@ export interface FileRouteTypes {
     | '/dashboard'
     | '/login'
     | '/logout'
-    | '/nav'
-    | '/product'
+    | '/movies'
+    | '/navigationblock'
+    | '/paramsparameter'
     | '/blog/$id'
     | '/items/$id'
     | '/products/$id'
@@ -159,8 +169,9 @@ export interface FileRouteTypes {
     | '/dashboard'
     | '/login'
     | '/logout'
-    | '/nav'
-    | '/product'
+    | '/movies'
+    | '/navigationblock'
+    | '/paramsparameter'
     | '/blog/$id'
     | '/items/$id'
     | '/products/$id'
@@ -174,8 +185,9 @@ export interface FileRouteTypes {
     | '/dashboard'
     | '/login'
     | '/logout'
-    | '/nav'
-    | '/product'
+    | '/movies'
+    | '/navigationblock'
+    | '/paramsparameter'
     | '/blog/$id'
     | '/items/$id'
     | '/products/$id'
@@ -190,8 +202,9 @@ export interface RootRouteChildren {
   DashboardRoute: typeof DashboardRoute
   LoginRoute: typeof LoginRoute
   LogoutRoute: typeof LogoutRoute
-  NavRoute: typeof NavRoute
-  ProductRoute: typeof ProductRoute
+  MoviesRoute: typeof MoviesRoute
+  NavigationblockRoute: typeof NavigationblockRoute
+  ParamsparameterRoute: typeof ParamsparameterRoute
   BlogIdRoute: typeof BlogIdRoute
   ItemsIdRoute: typeof ItemsIdRoute
   ProductsIdRoute: typeof ProductsIdRoute
@@ -201,18 +214,25 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/product': {
-      id: '/product'
-      path: '/product'
-      fullPath: '/product'
-      preLoaderRoute: typeof ProductRouteImport
+    '/paramsparameter': {
+      id: '/paramsparameter'
+      path: '/paramsparameter'
+      fullPath: '/paramsparameter'
+      preLoaderRoute: typeof ParamsparameterRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/nav': {
-      id: '/nav'
-      path: '/nav'
-      fullPath: '/nav'
-      preLoaderRoute: typeof NavRouteImport
+    '/navigationblock': {
+      id: '/navigationblock'
+      path: '/navigationblock'
+      fullPath: '/navigationblock'
+      preLoaderRoute: typeof NavigationblockRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/movies': {
+      id: '/movies'
+      path: '/movies'
+      fullPath: '/movies'
+      preLoaderRoute: typeof MoviesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/logout': {
@@ -302,8 +322,9 @@ const rootRouteChildren: RootRouteChildren = {
   DashboardRoute: DashboardRoute,
   LoginRoute: LoginRoute,
   LogoutRoute: LogoutRoute,
-  NavRoute: NavRoute,
-  ProductRoute: ProductRoute,
+  MoviesRoute: MoviesRoute,
+  NavigationblockRoute: NavigationblockRoute,
+  ParamsparameterRoute: ParamsparameterRoute,
   BlogIdRoute: BlogIdRoute,
   ItemsIdRoute: ItemsIdRoute,
   ProductsIdRoute: ProductsIdRoute,
