@@ -39,17 +39,17 @@ function App() {
 
     }
   }
-
-
   const del = useMutation({
     mutationFn: handleDelete
   })
 
+
   return (
-    <>
-      <div className="container py-5">
-
-
+    <React.Fragment>
+      <div className={`container py-5`}>
+        {
+          
+        }
         <div className="row g-4">
           {
             isLoading
@@ -97,8 +97,7 @@ function App() {
           />
         </div>
       </div>
-
-    </>
+    </React.Fragment>
   )
 }
 

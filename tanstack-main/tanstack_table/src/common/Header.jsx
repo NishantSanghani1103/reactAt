@@ -45,19 +45,18 @@ export default function Header() {
                         <li className="nav-item">
                             <Link to={'/defaultfilter'}>Default Filter</Link>
                         </li>
+                        <li className="nav-item">
+                            <Link to={'/filtercondition'}>Filter Condition</Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link to={'/filterbutton'}>Filter Button Condition</Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link to={'/filtermultiplevalue'}>Filter Multiple Value</Link>
+                        </li>
                     </ul>
 
-                    <form className="d-flex" role="search">
-                        <input
-                            className="form-control me-2"
-                            type="search"
-                            placeholder="Search"
-                            aria-label="Search"
-                        />
-                        <button className="btn btn-outline-success" type="submit">
-                            Search
-                        </button>
-                    </form>
+   
                 </div>
             </div>
         </nav >

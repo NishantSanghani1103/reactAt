@@ -13,6 +13,9 @@ import { Route as SortRouteImport } from './routes/sort'
 import { Route as RowselectionRouteImport } from './routes/rowselection'
 import { Route as PaginationRouteImport } from './routes/pagination'
 import { Route as GlobalfilterRouteImport } from './routes/globalfilter'
+import { Route as FiltermultiplevalueRouteImport } from './routes/filtermultiplevalue'
+import { Route as FilterconditionRouteImport } from './routes/filtercondition'
+import { Route as FilterbuttonRouteImport } from './routes/filterbutton'
 import { Route as DefaultfilterRouteImport } from './routes/defaultfilter'
 import { Route as CoulmnfilterRouteImport } from './routes/coulmnfilter'
 import { Route as ColumnorderRouteImport } from './routes/columnorder'
@@ -36,6 +39,21 @@ const PaginationRoute = PaginationRouteImport.update({
 const GlobalfilterRoute = GlobalfilterRouteImport.update({
   id: '/globalfilter',
   path: '/globalfilter',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FiltermultiplevalueRoute = FiltermultiplevalueRouteImport.update({
+  id: '/filtermultiplevalue',
+  path: '/filtermultiplevalue',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FilterconditionRoute = FilterconditionRouteImport.update({
+  id: '/filtercondition',
+  path: '/filtercondition',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FilterbuttonRoute = FilterbuttonRouteImport.update({
+  id: '/filterbutton',
+  path: '/filterbutton',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DefaultfilterRoute = DefaultfilterRouteImport.update({
@@ -64,6 +82,9 @@ export interface FileRoutesByFullPath {
   '/columnorder': typeof ColumnorderRoute
   '/coulmnfilter': typeof CoulmnfilterRoute
   '/defaultfilter': typeof DefaultfilterRoute
+  '/filterbutton': typeof FilterbuttonRoute
+  '/filtercondition': typeof FilterconditionRoute
+  '/filtermultiplevalue': typeof FiltermultiplevalueRoute
   '/globalfilter': typeof GlobalfilterRoute
   '/pagination': typeof PaginationRoute
   '/rowselection': typeof RowselectionRoute
@@ -74,6 +95,9 @@ export interface FileRoutesByTo {
   '/columnorder': typeof ColumnorderRoute
   '/coulmnfilter': typeof CoulmnfilterRoute
   '/defaultfilter': typeof DefaultfilterRoute
+  '/filterbutton': typeof FilterbuttonRoute
+  '/filtercondition': typeof FilterconditionRoute
+  '/filtermultiplevalue': typeof FiltermultiplevalueRoute
   '/globalfilter': typeof GlobalfilterRoute
   '/pagination': typeof PaginationRoute
   '/rowselection': typeof RowselectionRoute
@@ -85,6 +109,9 @@ export interface FileRoutesById {
   '/columnorder': typeof ColumnorderRoute
   '/coulmnfilter': typeof CoulmnfilterRoute
   '/defaultfilter': typeof DefaultfilterRoute
+  '/filterbutton': typeof FilterbuttonRoute
+  '/filtercondition': typeof FilterconditionRoute
+  '/filtermultiplevalue': typeof FiltermultiplevalueRoute
   '/globalfilter': typeof GlobalfilterRoute
   '/pagination': typeof PaginationRoute
   '/rowselection': typeof RowselectionRoute
@@ -97,6 +124,9 @@ export interface FileRouteTypes {
     | '/columnorder'
     | '/coulmnfilter'
     | '/defaultfilter'
+    | '/filterbutton'
+    | '/filtercondition'
+    | '/filtermultiplevalue'
     | '/globalfilter'
     | '/pagination'
     | '/rowselection'
@@ -107,6 +137,9 @@ export interface FileRouteTypes {
     | '/columnorder'
     | '/coulmnfilter'
     | '/defaultfilter'
+    | '/filterbutton'
+    | '/filtercondition'
+    | '/filtermultiplevalue'
     | '/globalfilter'
     | '/pagination'
     | '/rowselection'
@@ -117,6 +150,9 @@ export interface FileRouteTypes {
     | '/columnorder'
     | '/coulmnfilter'
     | '/defaultfilter'
+    | '/filterbutton'
+    | '/filtercondition'
+    | '/filtermultiplevalue'
     | '/globalfilter'
     | '/pagination'
     | '/rowselection'
@@ -128,6 +164,9 @@ export interface RootRouteChildren {
   ColumnorderRoute: typeof ColumnorderRoute
   CoulmnfilterRoute: typeof CoulmnfilterRoute
   DefaultfilterRoute: typeof DefaultfilterRoute
+  FilterbuttonRoute: typeof FilterbuttonRoute
+  FilterconditionRoute: typeof FilterconditionRoute
+  FiltermultiplevalueRoute: typeof FiltermultiplevalueRoute
   GlobalfilterRoute: typeof GlobalfilterRoute
   PaginationRoute: typeof PaginationRoute
   RowselectionRoute: typeof RowselectionRoute
@@ -162,6 +201,27 @@ declare module '@tanstack/react-router' {
       path: '/globalfilter'
       fullPath: '/globalfilter'
       preLoaderRoute: typeof GlobalfilterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/filtermultiplevalue': {
+      id: '/filtermultiplevalue'
+      path: '/filtermultiplevalue'
+      fullPath: '/filtermultiplevalue'
+      preLoaderRoute: typeof FiltermultiplevalueRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/filtercondition': {
+      id: '/filtercondition'
+      path: '/filtercondition'
+      fullPath: '/filtercondition'
+      preLoaderRoute: typeof FilterconditionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/filterbutton': {
+      id: '/filterbutton'
+      path: '/filterbutton'
+      fullPath: '/filterbutton'
+      preLoaderRoute: typeof FilterbuttonRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/defaultfilter': {
@@ -200,6 +260,9 @@ const rootRouteChildren: RootRouteChildren = {
   ColumnorderRoute: ColumnorderRoute,
   CoulmnfilterRoute: CoulmnfilterRoute,
   DefaultfilterRoute: DefaultfilterRoute,
+  FilterbuttonRoute: FilterbuttonRoute,
+  FilterconditionRoute: FilterconditionRoute,
+  FiltermultiplevalueRoute: FiltermultiplevalueRoute,
   GlobalfilterRoute: GlobalfilterRoute,
   PaginationRoute: PaginationRoute,
   RowselectionRoute: RowselectionRoute,
