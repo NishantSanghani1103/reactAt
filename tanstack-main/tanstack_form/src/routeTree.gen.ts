@@ -9,8 +9,44 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as ZodvalidationRouteImport } from './routes/zodvalidation'
+import { Route as MultiptypesRouteImport } from './routes/multiptypes'
+import { Route as FormsubscribeRouteImport } from './routes/formsubscribe'
+import { Route as FormprectiseRouteImport } from './routes/formprectise'
+import { Route as FormlevalvalidationRouteImport } from './routes/formlevalvalidation'
+import { Route as AsyncvalidationRouteImport } from './routes/asyncvalidation'
 import { Route as IndexRouteImport } from './routes/index'
 
+const ZodvalidationRoute = ZodvalidationRouteImport.update({
+  id: '/zodvalidation',
+  path: '/zodvalidation',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MultiptypesRoute = MultiptypesRouteImport.update({
+  id: '/multiptypes',
+  path: '/multiptypes',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FormsubscribeRoute = FormsubscribeRouteImport.update({
+  id: '/formsubscribe',
+  path: '/formsubscribe',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FormprectiseRoute = FormprectiseRouteImport.update({
+  id: '/formprectise',
+  path: '/formprectise',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FormlevalvalidationRoute = FormlevalvalidationRouteImport.update({
+  id: '/formlevalvalidation',
+  path: '/formlevalvalidation',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AsyncvalidationRoute = AsyncvalidationRouteImport.update({
+  id: '/asyncvalidation',
+  path: '/asyncvalidation',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -19,28 +55,116 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/asyncvalidation': typeof AsyncvalidationRoute
+  '/formlevalvalidation': typeof FormlevalvalidationRoute
+  '/formprectise': typeof FormprectiseRoute
+  '/formsubscribe': typeof FormsubscribeRoute
+  '/multiptypes': typeof MultiptypesRoute
+  '/zodvalidation': typeof ZodvalidationRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/asyncvalidation': typeof AsyncvalidationRoute
+  '/formlevalvalidation': typeof FormlevalvalidationRoute
+  '/formprectise': typeof FormprectiseRoute
+  '/formsubscribe': typeof FormsubscribeRoute
+  '/multiptypes': typeof MultiptypesRoute
+  '/zodvalidation': typeof ZodvalidationRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/asyncvalidation': typeof AsyncvalidationRoute
+  '/formlevalvalidation': typeof FormlevalvalidationRoute
+  '/formprectise': typeof FormprectiseRoute
+  '/formsubscribe': typeof FormsubscribeRoute
+  '/multiptypes': typeof MultiptypesRoute
+  '/zodvalidation': typeof ZodvalidationRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/asyncvalidation'
+    | '/formlevalvalidation'
+    | '/formprectise'
+    | '/formsubscribe'
+    | '/multiptypes'
+    | '/zodvalidation'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/asyncvalidation'
+    | '/formlevalvalidation'
+    | '/formprectise'
+    | '/formsubscribe'
+    | '/multiptypes'
+    | '/zodvalidation'
+  id:
+    | '__root__'
+    | '/'
+    | '/asyncvalidation'
+    | '/formlevalvalidation'
+    | '/formprectise'
+    | '/formsubscribe'
+    | '/multiptypes'
+    | '/zodvalidation'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AsyncvalidationRoute: typeof AsyncvalidationRoute
+  FormlevalvalidationRoute: typeof FormlevalvalidationRoute
+  FormprectiseRoute: typeof FormprectiseRoute
+  FormsubscribeRoute: typeof FormsubscribeRoute
+  MultiptypesRoute: typeof MultiptypesRoute
+  ZodvalidationRoute: typeof ZodvalidationRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/zodvalidation': {
+      id: '/zodvalidation'
+      path: '/zodvalidation'
+      fullPath: '/zodvalidation'
+      preLoaderRoute: typeof ZodvalidationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/multiptypes': {
+      id: '/multiptypes'
+      path: '/multiptypes'
+      fullPath: '/multiptypes'
+      preLoaderRoute: typeof MultiptypesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/formsubscribe': {
+      id: '/formsubscribe'
+      path: '/formsubscribe'
+      fullPath: '/formsubscribe'
+      preLoaderRoute: typeof FormsubscribeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/formprectise': {
+      id: '/formprectise'
+      path: '/formprectise'
+      fullPath: '/formprectise'
+      preLoaderRoute: typeof FormprectiseRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/formlevalvalidation': {
+      id: '/formlevalvalidation'
+      path: '/formlevalvalidation'
+      fullPath: '/formlevalvalidation'
+      preLoaderRoute: typeof FormlevalvalidationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/asyncvalidation': {
+      id: '/asyncvalidation'
+      path: '/asyncvalidation'
+      fullPath: '/asyncvalidation'
+      preLoaderRoute: typeof AsyncvalidationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -53,6 +177,12 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AsyncvalidationRoute: AsyncvalidationRoute,
+  FormlevalvalidationRoute: FormlevalvalidationRoute,
+  FormprectiseRoute: FormprectiseRoute,
+  FormsubscribeRoute: FormsubscribeRoute,
+  MultiptypesRoute: MultiptypesRoute,
+  ZodvalidationRoute: ZodvalidationRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

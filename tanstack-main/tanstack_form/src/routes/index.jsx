@@ -1,5 +1,5 @@
 /* eslint-disable react-refresh/only-export-components */
-import { useForm } from '@tanstack/react-form'
+import { useForm, useStore } from '@tanstack/react-form'
 import { createFileRoute } from '@tanstack/react-router'
 
 export const Route = createFileRoute('/')({
@@ -23,8 +23,15 @@ function RouteComponent() {
         form.handleSubmit()
     }
 
+    const name = useStore(form.store,(state)=>state.values.name)
+    console.log(name);
+    
+
     return (
         <div>
+            {
+                name
+            }
             <form onSubmit={saveData}>
 
                 {/* Name Field */}
@@ -38,7 +45,7 @@ function RouteComponent() {
                     {
                         (field) => (
                             <>
-                                <pre>{JSON.stringify(field.state.meta,null,2)}</pre>
+                                <pre>{JSON.stringify(field.state.meta, null, 2)}</pre>
                                 <input
                                     type="text"
                                     placeholder="Enter Name"
@@ -69,7 +76,7 @@ function RouteComponent() {
                         (field) => {
                             return (
                                 <>
-                                 <pre>{JSON.stringify(field.state.meta,null,2)}</pre>
+                                    <pre>{JSON.stringify(field.state.meta, null, 2)}</pre>
                                     <input type="text" placeholder='Enter Email' value={field.state.value}
                                         onChange={(e) => field.handleChange(e.target.value)}
                                     />
@@ -101,7 +108,7 @@ function RouteComponent() {
                         (field) => {
                             return (
                                 <>
-                                 <pre>{JSON.stringify(field.state.meta,null,2)}</pre>
+                                    <pre>{JSON.stringify(field.state.meta, null, 2)}</pre>
                                     <input type="text" placeholder='Enter Age' value={field.state.value}
                                         onChange={(e) => field.handleChange(e.target.value)}
                                     />
