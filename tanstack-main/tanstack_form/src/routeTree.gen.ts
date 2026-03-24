@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as ZodvalidationRouteImport } from './routes/zodvalidation'
+import { Route as ZodschemaRouteImport } from './routes/zodschema'
 import { Route as MultiptypesRouteImport } from './routes/multiptypes'
 import { Route as FormsubscribeRouteImport } from './routes/formsubscribe'
 import { Route as FormprectiseRouteImport } from './routes/formprectise'
@@ -20,6 +21,11 @@ import { Route as IndexRouteImport } from './routes/index'
 const ZodvalidationRoute = ZodvalidationRouteImport.update({
   id: '/zodvalidation',
   path: '/zodvalidation',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ZodschemaRoute = ZodschemaRouteImport.update({
+  id: '/zodschema',
+  path: '/zodschema',
   getParentRoute: () => rootRouteImport,
 } as any)
 const MultiptypesRoute = MultiptypesRouteImport.update({
@@ -60,6 +66,7 @@ export interface FileRoutesByFullPath {
   '/formprectise': typeof FormprectiseRoute
   '/formsubscribe': typeof FormsubscribeRoute
   '/multiptypes': typeof MultiptypesRoute
+  '/zodschema': typeof ZodschemaRoute
   '/zodvalidation': typeof ZodvalidationRoute
 }
 export interface FileRoutesByTo {
@@ -69,6 +76,7 @@ export interface FileRoutesByTo {
   '/formprectise': typeof FormprectiseRoute
   '/formsubscribe': typeof FormsubscribeRoute
   '/multiptypes': typeof MultiptypesRoute
+  '/zodschema': typeof ZodschemaRoute
   '/zodvalidation': typeof ZodvalidationRoute
 }
 export interface FileRoutesById {
@@ -79,6 +87,7 @@ export interface FileRoutesById {
   '/formprectise': typeof FormprectiseRoute
   '/formsubscribe': typeof FormsubscribeRoute
   '/multiptypes': typeof MultiptypesRoute
+  '/zodschema': typeof ZodschemaRoute
   '/zodvalidation': typeof ZodvalidationRoute
 }
 export interface FileRouteTypes {
@@ -90,6 +99,7 @@ export interface FileRouteTypes {
     | '/formprectise'
     | '/formsubscribe'
     | '/multiptypes'
+    | '/zodschema'
     | '/zodvalidation'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -99,6 +109,7 @@ export interface FileRouteTypes {
     | '/formprectise'
     | '/formsubscribe'
     | '/multiptypes'
+    | '/zodschema'
     | '/zodvalidation'
   id:
     | '__root__'
@@ -108,6 +119,7 @@ export interface FileRouteTypes {
     | '/formprectise'
     | '/formsubscribe'
     | '/multiptypes'
+    | '/zodschema'
     | '/zodvalidation'
   fileRoutesById: FileRoutesById
 }
@@ -118,6 +130,7 @@ export interface RootRouteChildren {
   FormprectiseRoute: typeof FormprectiseRoute
   FormsubscribeRoute: typeof FormsubscribeRoute
   MultiptypesRoute: typeof MultiptypesRoute
+  ZodschemaRoute: typeof ZodschemaRoute
   ZodvalidationRoute: typeof ZodvalidationRoute
 }
 
@@ -128,6 +141,13 @@ declare module '@tanstack/react-router' {
       path: '/zodvalidation'
       fullPath: '/zodvalidation'
       preLoaderRoute: typeof ZodvalidationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/zodschema': {
+      id: '/zodschema'
+      path: '/zodschema'
+      fullPath: '/zodschema'
+      preLoaderRoute: typeof ZodschemaRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/multiptypes': {
@@ -182,6 +202,7 @@ const rootRouteChildren: RootRouteChildren = {
   FormprectiseRoute: FormprectiseRoute,
   FormsubscribeRoute: FormsubscribeRoute,
   MultiptypesRoute: MultiptypesRoute,
+  ZodschemaRoute: ZodschemaRoute,
   ZodvalidationRoute: ZodvalidationRoute,
 }
 export const routeTree = rootRouteImport

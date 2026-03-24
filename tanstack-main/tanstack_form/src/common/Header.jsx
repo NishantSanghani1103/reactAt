@@ -42,6 +42,9 @@ export default function Header() {
                             <li>
                                 <Link to={'/zodvalidation'}>Zod Validation</Link>
                             </li>
+                            <li>
+                                <Link to={'/zodschema'}>Zod From Schema</Link>
+                            </li>
                         </ul>
 
 

@@ -3,6 +3,7 @@ export const formValue = {
     lastName: "",
     email: "",
     password: "",
+    age:"",
     confirmPassword: "",
     address: {
         street: "",
