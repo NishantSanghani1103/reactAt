@@ -38,6 +38,15 @@ export default function Header() {
                                     <Link to="/login">Login</Link>
                             }
                         </li>
+                        {
+                            user == null
+                            &&
+                            <li>
+
+                                <Link to="/forgot">Forgot Password</Link>
+                            </li>
+                        }
+
                         <li>
                             <Link to="/admin">Admin</Link>
                         </li>

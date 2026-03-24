@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux';
 import { Navigate, Outlet } from 'react-router-dom'
 
@@ -13,6 +13,7 @@ export default function PrivateRoutes({ userRoles }) {
     if (user == null || !userRoles.includes(user.role)) {
         return <Navigate to={'/unAuthorized'} />
     }
+
 
     return (
         <>

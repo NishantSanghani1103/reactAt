@@ -16,25 +16,30 @@ import MainContext from './common/MainContext';
 import UnAuthorized from './pages/publicPages/Un';
 import UserList from './pages/adminPages/UserList';
 import Setting from './pages/userPages/Setting';
+import ForgotPassword from './pages/publicPages/ForgotPassword';
 const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout />,
     children: [
       {
+        index: true,
+        element: <Home />,
+      },
+      {
+        path: "/about",
+        element: <About />
+      },
+      {
         element: <PublicRoutes />,
         children: [
           {
-            index: true,
-            element: <Home />,
-          },
-          {
-            path: "/about",
-            element: <About />
-          },
-          {
             path: "/login",
             element: <Login />
+          },
+          {
+            path: "/forgot",
+            element: <ForgotPassword />
           }
         ]
       },
