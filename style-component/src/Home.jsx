@@ -18,8 +18,6 @@ const SpanStyle=styled.span({
     color:"black"
 })
 export default function Home() {
-
-
     return (
         <>
             <HeadinStyle>Home</HeadinStyle>

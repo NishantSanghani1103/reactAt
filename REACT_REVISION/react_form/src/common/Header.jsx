@@ -3,8 +3,8 @@ import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 
 export default function Header() {
-    const {cart}=useSelector((store)=>store.cart)
-  
+    const { cart } = useSelector((store) => store.cart)
+
     return (
         <header className="w-full bg-white shadow-sm border-b sticky top-0">
             {/* Top Bar */}
@@ -50,6 +50,7 @@ export default function Header() {
                 <Link to={'/'}> <span className="cursor-pointer hover:text-black">Home</span></Link>
                 <Link to={'/shop'}> <span className="cursor-pointer hover:text-black">Shop</span></Link>
                 <Link to={'/form'}><span className="cursor-pointer hover:text-black">Form</span></Link>
+                <Link to={'/form-final'}><span className="cursor-pointer hover:text-black">Form Final</span></Link>
                 <span className="cursor-pointer hover:text-black">Deals</span>
                 <span className="cursor-pointer hover:text-black">Contact</span>
             </nav>

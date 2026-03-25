@@ -9,7 +9,11 @@ const formSchema = z.object({
     age: z.coerce.number().min(18, "Minimum Age Should Be 18"),
     email: z.email("Email Is Invalid"),
     confirm: z.string(),
-    password: z.string()
+    password: z.string(),
+    gender: z.enum(["male", "female"], {
+        message: "Please select gender"
+    }),
+    terms:z.boolean()
 }).refine((data) => data.password == data.confirm, {
     message: "Confirm Password Not Matched....",
     path: ["confirm"]
@@ -22,8 +26,7 @@ export default function Zode() {
     const saveData = async (data) => {
         await new Promise((res) => setTimeout((res), 2000))
         console.log(data);
-
-
+        reset()
     }
     return (
 
@@ -104,8 +107,18 @@ export default function Zode() {
                 }
 
             </div>
-            <div>
 
+            <div>
+                <label htmlFor="">Gender : </label>
+                <input type="radio" value={"male"}  {...register("gender")} />
+                Male
+                <input type="radio" value={"female"} {...register("gender")} />
+                FeMale
+            </div>
+            <div>
+                <div>
+                    <input type="checkbox" {...register("terms")} /> Accept Terms
+                </div>
                 <input type="submit" disabled={isSubmitting} />
             </div>
         </form>

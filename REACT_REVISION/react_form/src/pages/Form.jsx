@@ -23,7 +23,7 @@ export default function Form() {
             firstName: "",
             lastName: "",
             age: "",
-            gender: "male",
+            gender: "",
             teams: false
         })
     }

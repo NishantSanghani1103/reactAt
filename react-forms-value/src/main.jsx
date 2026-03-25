@@ -15,6 +15,7 @@ createRoot(document.getElementById('root')).render(
             <Route path='/' element={<FormElement />} />
             <Route path='/date' element={<DateBg />} />
             <Route path='/multiValue' element={<MultipleValues />} />
+            <Route path='/login' element={<LoginRegister/>} />
         </Routes>
     </BrowserRouter>
 

@@ -7,15 +7,15 @@ export default function UseCallBack() {
     function demo() {
         console.log("Main CallBack")
     }
-    const handleUseChild = useCallback(() => {
-        demo()
-    }, [])
+    // const handleUseChild = useCallback(() => {
+    //     demo()
+    // }, [])
     return (
         <div>
             <hr />
             <p>{count}</p>
             <button onClick={() => setCount(count + 1)}>+</button>
-            <UseCallBackChild click={handleUseChild} />
+            <UseCallBackChild click={demo} />
         </div>
     )
 }

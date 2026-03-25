@@ -23,7 +23,7 @@ createRoot(document.getElementById('root')).render(
   <BrowserRouter>
     <Routes>
       <Route path="/" element={<MainLayout />}>
-        <Route path="/" element={<Home />} />
+        <Route index={true} element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<ContactUs />} />
       </Route>

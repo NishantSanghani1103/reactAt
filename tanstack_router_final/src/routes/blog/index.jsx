@@ -18,7 +18,7 @@ function RouteComponent() {
       
         <ul>
           {
-            blog.map((value, index) => <li key={index}> <Link params={{ id: value.id }} to={`/blog/$id`}>{value.title}</Link></li>)
+            blog.map((value, index) => <li key={index}> <Link params={{ id: value.id }} to={`/blog/$id`} >{value.title}</Link></li>)
           }
         </ul>
       </div>

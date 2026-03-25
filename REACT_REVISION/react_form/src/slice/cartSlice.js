@@ -10,7 +10,7 @@ export const cartSlice = createSlice({
             const { id } = action.payload
             console.log(action.payload);
 
-            const checkInCart = state.cart.some((value, index) => value.id == id)
+            const checkInCart = state.cart.find((value, index) => value.id == id)
             if (checkInCart) {
                 alert("Items Already In Cart...!!")
             }

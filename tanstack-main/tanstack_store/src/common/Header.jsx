@@ -13,7 +13,8 @@ export default function Header() {
             localStorage.setItem("COUNT", JSON.stringify(counterState.state.count))
         }
         if (counterState.state.count > 5) {
-            unSubScribe()
+         
+            return unSubScribe()
         }
     })
 

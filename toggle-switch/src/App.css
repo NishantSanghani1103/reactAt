@@ -15,6 +15,7 @@
   color: white;
   font-weight: bold;
   background-color: red;
+  align-items: center;
 }
 .mainBg {
   background-color: #0080004a;
@@ -33,6 +34,7 @@
   font-weight: bold;
   background-color: #0080004a;
   border: 1px solid white;
+  align-items: center;
 }
 
 @keyframes moov {

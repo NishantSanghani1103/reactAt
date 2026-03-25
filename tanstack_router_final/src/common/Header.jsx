@@ -33,7 +33,7 @@ export default function Header() {
                         </li>
 
                         <li className="nav-item">
-                            <Link to={'/products/10'}>Products/id</Link>
+                            <Link to={'/products/$id'} params={{ id: 10 }}>Products/id</Link>
                         </li>
                         <li className="nav-item">
                             <Link to={'/navigationblock'}>NavigationBlock</Link>

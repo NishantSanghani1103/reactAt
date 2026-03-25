@@ -8,6 +8,7 @@ import Shop from './pages/Shop.jsx'
 import Form from './pages/Form.jsx'
 import MainContext from './pages/MainContext.jsx'
 import Cart from './pages/Cart.jsx'
+import FinalForm from './pages/FinalForm.jsx'
 
 
 const router = createBrowserRouter([
@@ -30,6 +31,10 @@ const router = createBrowserRouter([
       {
         path: "/cart",
         element: <Cart />
+      },
+      {
+        path: "/form-final",
+        element: <FinalForm />
       }
     ]
   }
