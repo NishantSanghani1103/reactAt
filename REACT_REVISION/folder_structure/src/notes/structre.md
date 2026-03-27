@@ -67,3 +67,74 @@ src/
 │
 ├── App.jsx
 └── main.jsx
+
+
+followed architcture.
+
+src/
+│
+├── app/                          # App-level setup
+│   ├── AppProviders.jsx          # Redux + Context providers
+│   ├── Router.jsx                # All routes
+│   └── store.js                  # Redux store
+│
+├── layouts/                      # Layouts
+│   ├── MainLayout.jsx
+│   ├── Header.jsx
+│   └── Footer.jsx
+│
+├── routes/                       # Route guards
+│   ├── PrivateRoutes.jsx
+│   └── PublicRoutes.jsx
+│
+├── features/                     # Feature-based modules
+│
+│   ├── admin/
+│   │   ├── pages/
+│   │   │   ├── AdminDashboard.jsx
+│   │   │   └── UserList.jsx
+│   │   ├── components/
+│   │   └── adminSlice.js
+│
+│   ├── user/
+│   │   ├── pages/
+│   │   │   ├── UserDashboard.jsx
+│   │   │   └── UserSetting.jsx
+│   │   ├── components/
+│   │   └── userSlice.js
+│
+│   ├── auth/
+│   │   ├── pages/
+│   │   │   ├── Login.jsx
+│   │   │   └── Register.jsx
+│   │   ├── components/
+│   │   └── authSlice.js
+│
+├── pages/                        # Public pages
+│   ├── Home.jsx
+│   ├── About.jsx
+│   ├── Contact.jsx
+│   └── Unauthorized.jsx
+│
+├── components/                   # Reusable UI components
+│   ├── Button/
+│   ├── Card/
+│   └── Loader/
+│
+├── context/                      # Context API
+│   └── MainContext.jsx
+│
+├── services/                     # API layer
+│   └── apiClient.js
+│
+├── hooks/                        # Custom hooks
+│   └── useAuth.js
+│
+├── utils/                        # Helper functions
+│   └── helpers.js
+│
+├── styles/                       # Global styles
+│   └── index.css
+│
+├── App.jsx
+└── main.jsx

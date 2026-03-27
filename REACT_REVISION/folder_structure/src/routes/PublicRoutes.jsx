@@ -1,7 +1,13 @@
 import React from 'react'
-import { Outlet } from 'react-router-dom'
+import { useSelector } from 'react-redux'
+import { Navigate, Outlet } from 'react-router-dom'
 
 export default function PublicRoutes() {
+    const { user } = useSelector((store) => store.auth)
+
+    if (user) {
+        return <Navigate to={'/'}/>
+    }
     return (
         <div>
             <h1>Public Routes</h1>

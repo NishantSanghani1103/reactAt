@@ -1,10 +1,15 @@
 import React, { useState } from 'react'
-import { useDispatch } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
-import { userAuth } from '../authApi'
 import { logIn } from '../authSlice'
+import { userAuth } from '../authApi'
+
+import { useDispatch } from 'react-redux'
+import { redirect, useNavigate } from '@tanstack/react-router'
+import { useAuth } from '../../../hooks/useAuth'
 
 export default function Login() {
+    const user = useAuth()
+    const navigate = useNavigate()
+
     const dispatch = useDispatch()
 
     const [loginValue, setlaginValue] = useState({
@@ -12,7 +17,6 @@ export default function Login() {
         password: ""
     })
 
-    const navigate = useNavigate()
 
     const handleChange = (event) => {
         const name = event.target.name
@@ -29,13 +33,11 @@ export default function Login() {
         const checkUser = userAuth.find((value, index) => value.email == loginValue.email)
         if (checkUser) {
             if (checkUser.password == loginValue.password) {
-                alert("Authenticated....!!");
                 dispatch(logIn(checkUser))
-                if (checkUser.role == "admin") {
-                    return navigate("/admin/dashboard")
-                }
-                if (checkUser.role == "user") {
-                    return navigate("/user/dashboard")
+                if (checkUser.role === "admin") {
+                    navigate({ to: "/admin/dashboard" });
+                } else if (checkUser.role === "user") {
+                    navigate({ to: "/user/dashboard" });
                 }
                 else {
                     alert("Invalid")
@@ -49,6 +51,7 @@ export default function Login() {
             alert("Email Doesn't Exists....!!");
         }
     }
+
     return (
         <div className="container d-flex justify-content-center align-items-center">
             <div className="card shadow p-4" style={{ width: "400px" }}>
