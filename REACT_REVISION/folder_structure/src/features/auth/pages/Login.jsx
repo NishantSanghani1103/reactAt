@@ -17,7 +17,6 @@ export default function Login() {
     const handleChange = (event) => {
         const name = event.target.name
         const value = event.target.value
-
         setlaginValue({
             ...loginValue,
             [name]: value
