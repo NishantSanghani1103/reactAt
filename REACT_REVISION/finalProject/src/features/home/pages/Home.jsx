@@ -1,15 +1,23 @@
-import { useQuery } from '@tanstack/react-query'
-import React from 'react'
+import { keepPreviousData, useQuery } from '@tanstack/react-query'
+import React, { useState } from 'react'
 import { getProduct } from '../services/homeProduct'
-
+import { Link } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { addToCart } from '../../cart/cartSlice'
+import { ToastContainer, toast } from 'react-toastify';
+import ResponsivePagination from 'react-responsive-pagination';
+import 'react-responsive-pagination/themes/classic-light-dark.css';
 export default function Home() {
+    const [skip, setskip] = useState(1)
+    const limit = 10
     const productData = async () => {
-        const res = await getProduct()
+        const res = await getProduct(skip, limit)
         return res.data
     }
     const { data, isError, error, isLoading } = useQuery({
-        queryKey: ["products"],
-        queryFn: productData
+        queryKey: ["products", skip],
+        queryFn: productData,
+        placeholderData: keepPreviousData
     })
     console.log(data);
 
@@ -33,25 +41,51 @@ export default function Home() {
 
                 </div>
             </div>
+            <ToastContainer />
+            <ResponsivePagination
+                current={skip}
+                total={Math.ceil((data?.total) / 10)}
+                onPageChange={setskip}
+            />
         </section>
     )
 }
 
 function ProductRows({ value }) {
-    const { title, price, thumbnail } = value
+    const { id, title, price, thumbnail } = value
+    const dispatch = useDispatch()
+    const { cart } = useSelector((store) => store.cart)
+    const addCart = () => {
+        const obj = {
+            id,
+            title,
+            price,
+            thumbnail,
+            qty: "1"
+        }
+        const checkItemsInCart = cart.find((value, index) => value.id == id)
+        if (checkItemsInCart) {
+            return toast.error("Items Already In Cart....!!")
+        }
+        dispatch(addToCart(obj))
+        toast.success("Item Added In Cart....!!")
+
+    }
     return (
         <>
             <div className="col-6 col-md-3 mb-4">
                 <div className="card h-100">
-                    <img
-                        src={thumbnail}
-                        className="card-img-top"
-                        alt="Product 4"
-                    />
+                    <Link to={`/products/${id}`}>
+                        <img
+                            src={thumbnail}
+                            className="card-img-top"
+                            alt="Product 4"
+                        />
+                    </Link>
                     <div className="card-body text-center">
                         <h5 className="card-title">{title}</h5>
                         <p className="card-text">{price} /-</p>
-                        <button className="btn btn-primary btn-sm">Buy Now</button>
+                        <button className="btn btn-primary btn-sm" onClick={addCart}>Add To Cart</button>
                     </div>
                 </div>
             </div>

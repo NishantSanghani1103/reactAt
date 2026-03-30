@@ -8,9 +8,12 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import AppWrapper from './app/AppWrapper.jsx'
-const client = new QueryClient()
+import AppProvider from './app/AppProvider.jsx'
+
 createRoot(document.getElementById('root')).render(
-  <AppWrapper>
-    <RouterProvider router={router} />
-  </AppWrapper>
+  <AppProvider>
+    <AppWrapper>
+      <RouterProvider router={router} />
+    </AppWrapper>
+  </AppProvider>
 )

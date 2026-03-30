@@ -1,9 +1,16 @@
 import React from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
+import { logOut } from '../features/auth/authSlice'
 
 export default function Header() {
+    const { cart } = useSelector((store) => store.cart)
+    const { user } = useSelector((store) => store.user)
+    const dispatch = useDispatch()
+    // console.log(user);
+
     return (
-        <nav className="navbar navbar-expand-lg navbar-light bg-light border-bottom shadow-sm">
+        <nav className="navbar navbar-expand-lg navbar-light bg-light border-bottom shadow-sm position-sticky top-0 z-2">
             <div className="container">
 
                 {/* Logo */}
@@ -36,7 +43,7 @@ export default function Header() {
                             <a className="nav-link" href="#">Categories</a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="#">Contact</a>
+                            <Link to={'/contact'} className="nav-link" >Contact</Link>
                         </li>
                     </ul>
 
@@ -54,12 +61,21 @@ export default function Header() {
 
                     {/* Action Buttons */}
                     <div>
-                        <button className="btn btn-outline-secondary me-2">
-                            Cart
-                        </button>
-                        <button className="btn btn-primary">
-                            Login
-                        </button>
+                        <Link to={'/cart'} className="btn btn-outline-secondary me-2">
+                            Cart ({cart.length})
+                        </Link>
+                        {
+                            user
+                                ?
+                                <Link to={'/'} onClick={() => dispatch(logOut())} className="btn btn-primary">
+                                    LogOut
+                                </Link>
+                                :
+                                <Link to={'/login'} className="btn btn-primary">
+                                    Login
+                                </Link>
+                        }
+
                     </div>
 
                 </div>
