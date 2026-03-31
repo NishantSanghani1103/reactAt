@@ -1,8 +1,9 @@
 import React from 'react'
 import { getProduct } from '../services/productApi';
 import { keepPreviousData, useQuery } from '@tanstack/react-query';
-
-export default function ProductItems({ categoryName, brandName, skip }) {
+import ResponsivePagination from 'react-responsive-pagination';
+import 'react-responsive-pagination/themes/classic-light-dark.css';
+export default function ProductItems({ categoryName, brandName, skip, setskip }) {
     console.log(categoryName);
     const productItems = async () => {
         const res = await getProduct(categoryName, brandName, skip)
@@ -48,9 +49,16 @@ export default function ProductItems({ categoryName, brandName, skip }) {
                                             </div>
                                         </div>
                                     </div>
+
+
                                 )
                             })
             }
+            <ResponsivePagination
+                current={skip}
+                total={Math.ceil(data?.total_records / data?.limit)}
+                onPageChange={setskip}
+            />
 
 
         </>

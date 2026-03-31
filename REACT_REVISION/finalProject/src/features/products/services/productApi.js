@@ -16,6 +16,7 @@ export const getProduct = (categoryName, brandName, skip) => {
     return api.get("/products.php", {
         params: {
             page: skip,
+            limit: 9,
             categories: categoryName.join(","),
             brands: brandName.join(",")
         }

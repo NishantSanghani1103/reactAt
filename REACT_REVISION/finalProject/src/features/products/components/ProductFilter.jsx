@@ -2,7 +2,7 @@ import React from 'react'
 import { getBrand, getCategory } from '../services/productApi'
 import { useQuery } from '@tanstack/react-query'
 
-export default function ProductFilter({ categoryName, setcategoryName, brandName, setbrandName }) {
+export default function ProductFilter({setskip, categoryName, setcategoryName, brandName, setbrandName }) {
     const getCategoryData = async () => {
         const res = await getCategory()
         return res.data
@@ -23,6 +23,7 @@ export default function ProductFilter({ categoryName, setcategoryName, brandName
 
     console.log(brandData?.data);
     const handleCategoryChange = (event) => {
+          setskip(1)
         if (event.target.checked) {
             setcategoryName([...categoryName, event.target.value])
         }
@@ -32,6 +33,7 @@ export default function ProductFilter({ categoryName, setcategoryName, brandName
     }
 
     const handleBrandChange = (event) => {
+        setskip(1)
         if (event.target.checked) {
             setbrandName([...brandName, event.target.value])
         }

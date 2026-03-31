@@ -3,8 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { getCategory } from '../services/productApi'
 import ProductFilter from '../components/ProductFilter'
 import ProductItems from '../components/ProductItems'
-import ResponsivePagination from 'react-responsive-pagination';
-import 'react-responsive-pagination/themes/classic-light-dark.css';
+
 export default function ProductListing() {
 
     const [categoryName, setcategoryName] = useState([])
@@ -21,7 +20,7 @@ export default function ProductListing() {
             <div className="row">
 
                 {/* Sidebar Filters */}
-                <ProductFilter brandName={brandName} setbrandName={setbrandName} categoryName={categoryName} setcategoryName={setcategoryName} />
+                <ProductFilter setskip={setskip} brandName={brandName} setbrandName={setbrandName} categoryName={categoryName} setcategoryName={setcategoryName} />
 
                 {/* Product Section */}
                 <div className="col-md-9">
@@ -30,11 +29,7 @@ export default function ProductListing() {
                         {/* Product 1 */}
                         <ProductItems setskip={setskip} skip={skip} brandName={brandName} setbrandName={setbrandName} categoryName={categoryName} />
 
-                        <ResponsivePagination
-                            current={skip}
-                            total={12}
-                            onPageChange={setskip}
-                        />
+                     
 
                     </div>
                 </div>

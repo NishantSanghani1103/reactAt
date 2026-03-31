@@ -53,7 +53,7 @@ export default function ProductDetails() {
                     <h2 className="fw-bold">{data?.title}</h2>
                     <p className="text-muted">{data?.brand}</p>
 
-                    <h4 className="text-primary mb-3">₹1,999</h4>
+                    <h4 className="text-primary mb-3">₹{data?.price}</h4>
 
                     <p>
                         {data?.description}

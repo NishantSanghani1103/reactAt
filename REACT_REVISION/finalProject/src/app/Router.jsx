@@ -11,6 +11,8 @@ import PrivateRoutes from "../routes/PrivateRoutes";
 import UnAuthorized from "../pages/UnAuthorized";
 import Contact from "../pages/Contact";
 import ProductListing from "../features/products/pages/ProductListing";
+import UserForm from "../features/user/pages/UserForm";
+import UserList from "../features/admin/pages/UserList";
 
 export const router = createBrowserRouter([
     {
@@ -22,19 +24,19 @@ export const router = createBrowserRouter([
                 element: <Home />
             },
             {
-                path: "/products",
+                path: "products",
                 element: <ProductListing />
             },
             {
-                path: "/products/:id",
+                path: "products/:id",
                 element: <ProductDetails />
             },
             {
-                path: "/unauthorized",
+                path: "unauthorized",
                 element: <UnAuthorized />
             },
             {
-                path: "/contact",
+                path: "contact",
                 element: <Contact />
             },
 
@@ -44,9 +46,25 @@ export const router = createBrowserRouter([
                 element: <PrivateRoutes userRole={["user"]} />,
                 children: [
                     {
-                        path: "/cart",
+                        path: "cart",
                         element: <Cart />
                     },
+                    {
+                        path: "user-form",
+                        element: <UserForm />
+                    }
+                ]
+            },
+
+            // private routes for the admin
+
+            {
+                element: <PrivateRoutes userRole={["admin"]} />,
+                children: [
+                    {
+                        path: "user-list",
+                        element: <UserList />
+                    }
                 ]
             },
 
@@ -56,20 +74,12 @@ export const router = createBrowserRouter([
                 element: <PublicRoutes />,
                 children: [
                     {
-                        path: "/login",
+                        path: "login",
                         element: <Login />
                     },
                 ]
-            },
-            {
-                element: <PublicRoutes />,
-                children: [
-                    {
-                        path: "/admin",
-                        element: <AdminDashboard />
-                    }
-                ]
             }
+
         ]
     }
 ])

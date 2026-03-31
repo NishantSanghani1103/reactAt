@@ -1,9 +1,9 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import { logOut } from '../features/auth/authSlice'
 
-export default function Header() {
+export default function Header({ setsearch, setskip }) {
     const { cart } = useSelector((store) => store.cart)
     const { user } = useSelector((store) => store.user)
     const dispatch = useDispatch()
@@ -34,16 +34,19 @@ export default function Header() {
                     {/* Navigation Links */}
                     <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                         <li className="nav-item">
-                            <Link to={'/'} className="nav-link active">Home</Link>
+                            <NavLink to={'/'} className="nav-link ">Home</NavLink>
                         </li>
                         <li className="nav-item">
-                            <Link to={'/products'} className="nav-link" href="#">Shop</Link>
+                            <NavLink to={'/products'} className="nav-link" href="#">Shop</NavLink>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="#">Categories</a>
+                            <NavLink to={'/user-form'} className="nav-link" >User Form</NavLink>
                         </li>
                         <li className="nav-item">
-                            <Link to={'/contact'} className="nav-link" >Contact</Link>
+                            <NavLink to={'/user-list'} className="nav-link" >User List</NavLink>
+                        </li>
+                        <li className="nav-item">
+                            <NavLink to={'/contact'} className="nav-link" >Contact</NavLink>
                         </li>
                     </ul>
 
@@ -53,6 +56,10 @@ export default function Header() {
                             className="form-control me-2"
                             type="search"
                             placeholder="Search products"
+                            onChange={(e) => {
+                                setsearch(e.target.value)
+                                setskip(1)
+                            }}
                         />
                         <button className="btn btn-outline-primary" type="submit">
                             Search
@@ -68,7 +75,7 @@ export default function Header() {
                             user
                                 ?
                                 <Link to={'/'} onClick={() => dispatch(logOut())} className="btn btn-primary">
-                                    LogOut
+                                    LogOut ({user.role})
                                 </Link>
                                 :
                                 <Link to={'/login'} className="btn btn-primary">
