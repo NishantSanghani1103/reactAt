@@ -16,6 +16,7 @@ FINALPROJECT/
 │   ├── features/
 │   │   │
 │   │   ├── admin/
+            ├── components/
 │   │   │   └── pages/
 │   │   │       └── AdminDashboard.jsx
 │   │   │
