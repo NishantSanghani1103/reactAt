@@ -2,15 +2,18 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, NavLink } from 'react-router-dom'
 import { logOut } from '../features/auth/authSlice'
+import { useGlobalCart } from '../hooks/useGlobalCart'
 
 export default function Header({ setsearch, setskip }) {
     const { cart } = useSelector((store) => store.cart)
     const { user } = useSelector((store) => store.user)
     const dispatch = useDispatch()
+    const { globalCart } = useGlobalCart()
+
     // console.log(user);
 
     return (
-        <nav className="navbar navbar-expand-lg navbar-light bg-light border-bottom shadow-sm position-sticky top-0 z-2">
+        <nav className="navbar navbar-expand-lg navbar-light bg-light border-bottom shadow-sm position-sticky top-0 " style={{zIndex:"99"}}>
             <div className="container">
 
                 {/* Logo */}
@@ -61,15 +64,16 @@ export default function Header({ setsearch, setskip }) {
                                 setskip(1)
                             }}
                         />
-                        <button className="btn btn-outline-primary" type="submit">
-                            Search
-                        </button>
+             
                     </form>
 
                     {/* Action Buttons */}
                     <div>
                         <Link to={'/cart'} className="btn btn-outline-secondary me-2">
                             Cart ({cart.length})
+                        </Link>
+                        <Link to={'/cart/thunk'} className="btn btn-outline-secondary me-2">
+                            Cart Thunk ({globalCart?.carts?.length})
                         </Link>
                         {
                             user

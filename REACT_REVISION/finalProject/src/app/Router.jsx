@@ -13,6 +13,8 @@ import Contact from "../pages/Contact";
 import ProductListing from "../features/products/pages/ProductListing";
 import UserForm from "../features/user/pages/UserForm";
 import UserList from "../features/admin/pages/UserList";
+import CartThunk from "../features/cartThunk/pages/CartThunk";
+import CartThunkDetails from "../features/cartThunk/pages/CartThunkDetails";
 
 export const router = createBrowserRouter([
     {
@@ -39,7 +41,14 @@ export const router = createBrowserRouter([
                 path: "contact",
                 element: <Contact />
             },
-
+            {
+                path: "cart/thunk",
+                element: <CartThunk />
+            },
+            {
+                path: "cart/thunk/:id",
+                element: <CartThunkDetails />
+            },
             // private routes for the user
 
             {

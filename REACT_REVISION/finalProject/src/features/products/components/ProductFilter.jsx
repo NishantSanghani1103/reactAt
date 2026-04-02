@@ -2,7 +2,7 @@ import React from 'react'
 import { getBrand, getCategory } from '../services/productApi'
 import { useQuery } from '@tanstack/react-query'
 
-export default function ProductFilter({setskip, categoryName, setcategoryName, brandName, setbrandName }) {
+export default function ProductFilter({ setskip, categoryName, setcategoryName, brandName, setbrandName }) {
     const getCategoryData = async () => {
         const res = await getCategory()
         return res.data
@@ -23,7 +23,7 @@ export default function ProductFilter({setskip, categoryName, setcategoryName, b
 
     console.log(brandData?.data);
     const handleCategoryChange = (event) => {
-          setskip(1)
+        setskip(1)
         if (event.target.checked) {
             setcategoryName([...categoryName, event.target.value])
         }
@@ -43,7 +43,10 @@ export default function ProductFilter({setskip, categoryName, setcategoryName, b
     }
     return (
         <div className="col-md-3">
-            <div className="card p-3 shadow-sm h-25 overflow-y-scroll">
+            <div
+                className="card p-3 shadow-sm"
+                style={{ height: "60vh", overflowY: "auto" }}
+            >
                 <div className='d-flex justify-content-between'>
                     <h5 className="mb-3">Filters</h5>
                     <p className='fw-bold' onClick={() => {
@@ -51,6 +54,7 @@ export default function ProductFilter({setskip, categoryName, setcategoryName, b
                         setcategoryName([])
                     }}>Clear All</p>
                 </div>
+
                 {/* Category */}
                 <div className="mb-3">
                     <h6>Category</h6>
@@ -70,13 +74,11 @@ export default function ProductFilter({setskip, categoryName, setcategoryName, b
                                         </div>
                                     )
                                 })
-
-
                     }
-
                 </div>
 
-                <div className="mb-3 ">
+                {/* Brands */}
+                <div className="mb-3">
                     <h6>Brands</h6>
                     {
                         isLoading
@@ -95,9 +97,7 @@ export default function ProductFilter({setskip, categoryName, setcategoryName, b
                                     )
                                 })
                     }
-
                 </div>
-
 
             </div>
         </div>

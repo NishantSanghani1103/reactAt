@@ -14,7 +14,7 @@ export const getProduct = (search, skip, limit) => {
     }
     return api.get(url, {
         params: {
-            q: search || undefined,
+            q: search ?? undefined,
             skip: (skip - 1) * limit,
             limit
         }

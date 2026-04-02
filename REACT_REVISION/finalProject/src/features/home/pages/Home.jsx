@@ -39,7 +39,11 @@ export default function Home() {
                                 ?
                                 <p>{error.message}</p>
                                 :
-                                data?.products?.map((value, index) => <ProductRows value={value} key={index} />)
+                                data?.products?.length == 0
+                                    ?
+                                    <p>Products Not Found...!!</p>
+                                    :
+                                    data?.products?.map((value, index) => <ProductRows value={value} key={index} />)
                     }
 
                 </div>
