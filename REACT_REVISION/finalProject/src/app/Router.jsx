@@ -34,10 +34,6 @@ export const router = createBrowserRouter([
                 element: <ProductDetails />
             },
             {
-                path: "unauthorized",
-                element: <UnAuthorized />
-            },
-            {
                 path: "contact",
                 element: <Contact />
             },
@@ -48,6 +44,10 @@ export const router = createBrowserRouter([
             {
                 path: "cart/thunk/:id",
                 element: <CartThunkDetails />
+            },
+            {
+                path: "unauthorized",
+                element: <UnAuthorized />
             },
             // private routes for the user
 
@@ -85,7 +85,7 @@ export const router = createBrowserRouter([
                     {
                         path: "login",
                         element: <Login />
-                    },
+                    }
                 ]
             }
 

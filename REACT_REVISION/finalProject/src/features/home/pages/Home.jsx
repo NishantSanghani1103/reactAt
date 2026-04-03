@@ -3,10 +3,11 @@ import React, { useEffect, useState } from 'react'
 import { getProduct } from '../services/homeProduct'
 import { Link, useOutletContext } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { addToCart } from '../../cart/cartSlice'
+import { addToCart, removeFromCart } from '../../cart/cartSlice'
 import { ToastContainer, toast } from 'react-toastify';
 import ResponsivePagination from 'react-responsive-pagination';
 import 'react-responsive-pagination/themes/classic-light-dark.css';
+
 export default function Home() {
     const { search, skip, setskip } = useOutletContext()
     const limit = 12
@@ -78,6 +79,15 @@ function ProductRows({ value }) {
         toast.success("Item Added In Cart....!!")
 
     }
+    const checkProductInCart = cart.filter((value, index) => value.id == id)
+    console.log(checkProductInCart);
+
+    const removeCart = () => {
+        dispatch(removeFromCart(id))
+        toast.success("Item Removed From The Cart...!!")
+
+    }
+
     return (
         <>
             <div className="col-6 col-md-3 mb-4">
@@ -92,7 +102,14 @@ function ProductRows({ value }) {
                     <div className="card-body text-center">
                         <h5 className="card-title">{title}</h5>
                         <p className="card-text">{price} /-</p>
-                        <button className="btn btn-primary btn-sm" onClick={addCart}>Add To Cart</button>
+                        {
+                            checkProductInCart.length == 1
+                                ?
+                                <button className="btn btn-danger btn-sm" onClick={removeCart}>Remove From Cart</button>
+                                :
+                                <button className="btn btn-primary btn-sm" onClick={addCart}>Add To Cart</button>
+                        }
+
                     </div>
                 </div>
             </div>
