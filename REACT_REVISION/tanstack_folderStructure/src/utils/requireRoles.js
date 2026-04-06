@@ -1,6 +1,8 @@
 import { redirect } from "@tanstack/react-router";
 
 export const requireRole = (role) => ({ context }) => {
+    // console.log(context);
+    
 
     const user = context.user;
 
