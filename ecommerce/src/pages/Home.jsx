@@ -26,7 +26,7 @@ export default function Home() {
     useEffect(() => {
         categoryView()
         productView()
-    }, [])
+    }, [categoryData])
 
     return (
         <>
